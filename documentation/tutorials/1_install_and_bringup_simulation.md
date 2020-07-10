@@ -58,7 +58,7 @@ Start the following launch file to bringup Gazebo and spawn a nexus robot:
 
 You should see Gazebo starting and a nexus robot spawning on screen.
 
-<a href="url"><img src="/documentation/pictures/tutorial_1_picture_1.png" align="center" height="400" width="600"></a>
+<a href="url"><img src="/documentation/pictures/tutorial_1_picture_1.png" align="center" height="665" width="1000"/></a>
 
 
 ## Command & Feedback
