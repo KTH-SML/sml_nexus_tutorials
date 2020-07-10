@@ -158,7 +158,7 @@ The list includes "gazebo", the simulation software, and "qualisys", our simulat
 
 Looking at the launch file in `/sml_nexus_tutorials/sml_nexus_tutorials/launch`:
 
-```
+```xml
 <?xml version="1.0"?>
 <launch>
   <arg name="use_sim_time" default="true" />
@@ -188,7 +188,7 @@ Looking at the launch file in `/sml_nexus_tutorials/sml_nexus_tutorials/launch`:
 
 The first part is defining the arguments used by Gazebo and the launching Gazebo:
 
-```
+```xml
   <arg name="use_sim_time" default="true" />
   <arg name="gui" default="true" />
   <arg name="headless" default="false" />
@@ -204,7 +204,7 @@ The first part is defining the arguments used by Gazebo and the launching Gazebo
 
 Then the robot description is loaded and the robot model is spawn in Gazebo:
 
-```
+```xml
   <!-- Load robot description -->
   <include file="$(find sml_nexus_description)/launch/sml_nexus_description.launch" />
 
@@ -215,7 +215,7 @@ Then the robot description is loaded and the robot model is spawn in Gazebo:
 
 Finally the motion capture simulation node is launched:
 
-```
+```xml
   <!-- Motion capture system simulation -->
   <include file="$(find mocap_simulator)/launch/qualisys_simulator.launch" />
 ```
