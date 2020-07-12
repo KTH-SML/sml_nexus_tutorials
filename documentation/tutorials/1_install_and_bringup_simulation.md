@@ -2,7 +2,7 @@
 
 ## Prerequisites
 ### Install Gazebo for ROS
-Please follow instruction [here]() to install Gazebo for ROS
+Please follow instruction [here](http://gazebosim.org/tutorials?tut=ros_installing) to install Gazebo for ROS
 
 ### Install ROS Dependencies
 First update your package list by running:
