@@ -3,7 +3,7 @@
 In this tutorial we are going to look at a simple controller that drives the robot to a pre-determined pose.
 
 ## Prerequisites
-The SML Nexus packages must have been installed and the simulation setup as detailed in the [previous tutorial](/documentation/tutorials/2_simple_controller_simulation_python.md) 
+The SML Nexus packages must have been installed and the simulation setup as detailed in the [previous tutorial](/documentation/tutorials/1_install_and_bringup_simulation.md) 
 
 ## Bringup the simulation and the controller
 
