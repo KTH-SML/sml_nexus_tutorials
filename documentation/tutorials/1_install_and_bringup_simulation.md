@@ -33,6 +33,7 @@ Download the required SML Nexus packages from Github to your workspace source di
 cd <your_workspace>/src
 git clone https://github.com/KTH-SML/sml_nexus.git
 git clone https://github.com/KTH-SML/sml_nexus_simulator.git
+git clone https://github.com/KTH-SML/motion_capture_simulator.git
 ```
 And the current tutorial package:
 
