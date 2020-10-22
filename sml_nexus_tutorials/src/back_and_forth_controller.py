@@ -51,7 +51,7 @@ class BackAndForthController():
         rospy.Subscriber("/qualisys/nexus1/pose", geometry_msgs.msg.PoseStamped, self.pose_callback)
 
         #Setup velocity command publisher
-        vel_pub = rospy.Publisher("/cmd_vel", geometry_msgs.msg.Twist, queue_size=100)
+        vel_pub = rospy.Publisher("cmd_vel", geometry_msgs.msg.Twist, queue_size=100)
 
         #Setup transform subscriber
         tf_buffer = tf2_ros.Buffer()
