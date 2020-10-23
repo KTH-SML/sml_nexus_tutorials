@@ -46,6 +46,85 @@ The relationship between the controller, the motion capture system (qualisys) an
 
 Use CTRL+C to stop the program.
 
+### Examining the launch file
+To understand how everything is launched, take a quick look into [sml_nexus_tutorials/launch/2_simple_controller_simulation_python.launch](sml_nexus_tutorials/launch/2_simple_controller_simulation_python.launch)
+
+```XML
+<?xml version="1.0"?>
+<launch>
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <arg name="paused" value="false"/>
+  </include>
+
+  <!-- Load robot description -->
+  <include file="$(find sml_nexus_description)/launch/sml_nexus_description.launch" />
+
+  <!-- Spawn the robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+      args="-urdf -model nexus1 -param robot_description -x 0 -y 0 -z 0.5" />
+
+  <!-- Motion capture system simulation -->
+  <include file="$(find mocap_simulator)/launch/qualisys_simulator.launch" />
+
+  <!-- Controller node -->
+  <node name="back_and_forth_controller" pkg="sml_nexus_tutorials" type="back_and_forth_controller.py" output="screen" />
+
+</launch>
+```
+
+The `<include>` tags are used to include other launch files into our own. The first part of the file defines a few argument and uses them to launch gazebo with an empty world.
+
+```XML
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <arg name="paused" value="false"/>
+  </include>
+```
+
+The following line launches the nexus robot description, that contains the model of the robot. It will be used to spawn the robot.
+
+```XML
+  <!-- Load robot description -->
+  <include file="$(find sml_nexus_description)/launch/sml_nexus_description.launch" />
+```
+
+A spawner node is used to spawn the nexus in the simulation. Please take a look at the arguments passed to the node. The robot name (nexus1), model description (robot_description, loaded from the previous line) and spawn location. You can play with the spawn location and see how it affects the controller (z-value shouldn't be changed thought).
+
+```XML
+  <!-- Spawn the robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+      args="-urdf -model nexus1 -param robot_description -x 0 -y 0 -z 0.5" />
+```
+
+The following line launches the qualisys mocap simulator.
+
+```XML
+  <!-- Motion capture system simulation -->
+  <include file="$(find mocap_simulator)/launch/qualisys_simulator.launch" />
+```
+
+Finally, the controller is launched.
+
+```XML
+  <!-- Controller node -->
+  <node name="back_and_forth_controller" pkg="sml_nexus_tutorials" type="back_and_forth_controller.py" output="screen" />
+```
+
 ### Examining the code
 
 Let's look at the code in [sml_nexus_tutorials/src/back_and_forth_controller.py](/sml_nexus_tutorials/src/back_and_forth_controller.py) line by line.
@@ -134,7 +213,7 @@ For more information about ROS subcribers/publishers, you can take a look at the
         rospy.Subscriber("/qualisys/nexus1/pose", geometry_msgs.msg.PoseStamped, self.pose_callback)
 
         #Setup velocity command publisher
-        vel_pub = rospy.Publisher("/cmd_vel", geometry_msgs.msg.Twist, queue_size=100)
+        vel_pub = rospy.Publisher("cmd_vel", geometry_msgs.msg.Twist, queue_size=100)
 ```
 
 The robot pose and goal pose are expressed in the motion capture system frame of reference but the robot command has to be sent in the robot reference frame. Hopefully the motion capture system node also provides the transform between its frame and the tracked subject frame. ROS provides a framework for transforms (called tf2, [here for more information](http://wiki.ros.org/tf2/Tutorials)). 
@@ -311,3 +390,5 @@ if __name__ == "__main__":
         sys.exit(0)
 ```
 
+## Next Tutorial
+Let's now add more robots in the next tutorial: [Multi Robot Simulation (Python)](/documentation/tutorials/3_multi_robot_simulation_python.md)
