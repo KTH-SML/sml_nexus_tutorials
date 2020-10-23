@@ -37,9 +37,6 @@ class FollowerController():
         #Get offset from tracked object
         tracking_offset = rospy.get_param('~tracking_offset')
 
-        #Tolerance interval for declaring a position as reached (x, y, heading angle)
-        reach_tolerance = (0.05, 0.05, 0.02)
-
         #Controller gains (for x, y, heading)
         gains = (2, 2, 2)
 
