@@ -11,3 +11,6 @@ Back and forth controller example.
 
 ### 3. [Multi Robot Simulation (Python)](/documentation/tutorials/3_multi_robot_simulation_python.md)
 Adding more robots to the simulation.
+
+### 4. [Error Monitoring (Python)](/documentation/tutorials/4_error_monitoring_python.md)
+Broadcasting useful data from ROS and plotting/saving it.
