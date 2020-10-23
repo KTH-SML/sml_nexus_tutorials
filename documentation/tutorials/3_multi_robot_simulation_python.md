@@ -444,3 +444,5 @@ if __name__ == "__main__":
         sys.exit(0)
 ```
 
+## Next Tutorial
+You can now learn more on how to monitor your controller in the next tutorial: [Error monitoring (Python)](/documentation/tutorials/4_error_monitoring_python.md)
