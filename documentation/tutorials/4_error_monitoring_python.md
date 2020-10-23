@@ -1,4 +1,4 @@
-# Tutorial 4 - Error monitoring (Python)
+# Tutorial 4 - Error Monitoring (Python)
 
 One key aspect when designing a controller is the ability to plot and analyse output and error. In this tutorial a few ways to plot and save data will be presented.
 
@@ -196,4 +196,5 @@ An external callback function, `ErrorNexus2XCallback()` is called everytime a ne
 function ErrorNexus2XCallback(~, message)
   global error_nexus2_x;
   error_nexus2_x(end+1) = message.Data;
+end
 ```
