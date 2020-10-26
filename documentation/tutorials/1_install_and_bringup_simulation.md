@@ -15,7 +15,7 @@ And install the needed package by running the following lines (replacing <your_r
 sudo apt-get install ros-<your_ros_distro>-urdf
 sudo apt-get install ros-<your_ros_distro>-robot-state-publisher
 sudo apt-get install ros-<your_ros_distro>-kdl-parser
-sudo apt-get install ros-<your_ros_distro>-geometry_msgs
+sudo apt-get install ros-<your_ros_distro>-geometry-msgs
 sudo apt-get install ros-<your_ros_distro>-gazebo-dev
 sudo apt-get install ros-<your_ros_distro>-nav_msgs
 sudo apt-get install ros-<your_ros_distro>-std_msgs
