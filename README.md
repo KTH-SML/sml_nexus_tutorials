@@ -14,3 +14,6 @@ Adding more robots to the simulation.
 
 ### 4. [Error Monitoring (Python)](/documentation/tutorials/4_error_monitoring_python.md)
 Broadcasting useful data from ROS and plotting/saving it.
+
+### 5. [Running the Real Robot](/documentation/tutorials/5_running_the_real_robot.md)
+Putting into practice what was learned by running the code on the real robot.
