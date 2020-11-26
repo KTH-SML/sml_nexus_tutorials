@@ -9,7 +9,7 @@ The SML Nexus packages must have been installed and the simulation setup as deta
 
 Start the following launch file to bringup Gazebo and spawn a nexus robot:
 
-`roslaunch sml_nexus_tutorials 2_simple_controller_python.launch`
+`roslaunch sml_nexus_tutorials 2_simple_controller_simulation_python.launch`
 
 After a few seconds, you should be able to see the robot moving back and forth between two locations.
 
