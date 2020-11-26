@@ -11,6 +11,7 @@
 #=====================================
 import sys
 import rospy
+import copy
 import geometry_msgs.msg
 import tf2_ros
 import tf2_geometry_msgs
@@ -81,7 +82,7 @@ class FollowerController():
         tf_buffer = tf2_ros.Buffer()
         tf_listener = tf2_ros.TransformListener(tf_buffer)
         #Wait for transform to be available
-        while not tf_buffer.can_transform('mocap', robot_name+'/base_link', rospy.Time()):
+        while not tf_buffer.can_transform('mocap', robot_name, rospy.Time()):
             rospy.loginfo("Wait for transform to be available")
             rospy.sleep(1)
 
@@ -157,7 +158,7 @@ class FollowerController():
             #-----------------
             try:
                 #Get transform from mocap frame to robot frame
-                transform = tf_buffer.lookup_transform('mocap', robot_name+'/base_link', rospy.Time())
+                transform = tf_buffer.lookup_transform('mocap', robot_name, rospy.Time())
                 #
                 vel_cmd_msg_transformed = transform_twist(vel_cmd_msg, transform)
                 #Publish cmd message
@@ -199,12 +200,16 @@ class FollowerController():
 #=====================================
 def transform_twist(twist= geometry_msgs.msg.Twist, transform_stamped = geometry_msgs.msg.TransformStamped):
 
+    transform_stamped_ = copy.deepcopy(transform_stamped)
+    #Inverse real-part of quaternion to inverse rotation
+    transform_stamped_.transform.rotation.w = - transform_stamped_.transform.rotation.w
+
     twist_vel = geometry_msgs.msg.Vector3Stamped()
     twist_rot = geometry_msgs.msg.Vector3Stamped()
     twist_vel.vector = twist.linear
     twist_rot.vector = twist.angular
-    out_vel = tf2_geometry_msgs.do_transform_vector3(twist_vel, transform_stamped)
-    out_rot = tf2_geometry_msgs.do_transform_vector3(twist_rot, transform_stamped)
+    out_vel = tf2_geometry_msgs.do_transform_vector3(twist_vel, transform_stamped_)
+    out_rot = tf2_geometry_msgs.do_transform_vector3(twist_rot, transform_stamped_)
 
     #Populate new twist message
     new_twist = geometry_msgs.msg.Twist()

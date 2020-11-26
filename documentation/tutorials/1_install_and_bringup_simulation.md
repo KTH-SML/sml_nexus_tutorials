@@ -42,13 +42,13 @@ And the current tutorial package:
 Build the packages using either "catkin_make" or "catkin build"
 
 ```
+cd ..
 catkin_make
 ```
 
 Don't forget to source once everything has been built
 
 ```
-cd ..
 source devel/setup.bash
 ```
 
@@ -124,7 +124,7 @@ pose:
 
 
 ### Sending Commands
-The nexus robots are velocity-controlled (second order). As ground holonomic robots, they can be controlled in linear velocity along the x, y-axis and in angular velocity around the z-axis.
+The nexus robots are velocity-controlled (single integrator). As ground holonomic robots, they can be controlled in linear velocity along the x, y-axis and in angular velocity around the z-axis.
 
 The command uses a Twist message (ROS message type for velocity), and needs to be published on the `/cmd_vel` topic at a high enough frequency.
 

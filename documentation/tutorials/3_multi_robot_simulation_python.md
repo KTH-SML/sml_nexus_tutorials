@@ -445,4 +445,4 @@ if __name__ == "__main__":
 ```
 
 ## Next Tutorial
-You can now learn more on how to monitor your controller in the next tutorial: [Error monitoring (Python)](/documentation/tutorials/4_error_monitoring_python.md)
+You can now learn more on how to monitor your controller in the next tutorial: [Error Monitoring (Python)](/documentation/tutorials/4_error_monitoring_python.md)
