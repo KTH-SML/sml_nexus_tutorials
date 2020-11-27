@@ -56,7 +56,7 @@ source devel/setup.bash
 ## Bringup The Simulation
 
 Start the following launch file to bringup Gazebo and spawn a nexus robot:
-`roslaunch sml_nexus_tutorials 1_install_and_bringup.launch`
+`roslaunch sml_nexus_tutorials 1_install_and_bringup_simulation.launch`
 
 You should see Gazebo starting and a nexus robot spawning on screen.
 
