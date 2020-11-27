@@ -121,7 +121,7 @@ Power the robot base by pushing the red button on the side. Power the onbard com
 ### Starting ROS master
 Launch the ROS master and the motion capture node from your computer by running:
 
-`roslaunch mocap_qualisys qualisys.launch`.
+`roslaunch mocap_qualisys qualisys.launch`
 
 ### Onboard computer
 Using another terminal window, connect by SSH to the nexus onboard computer (if not already connected) and run the following ROS launch file:
@@ -167,6 +167,8 @@ On your computer run the following launch file:
 
 This launch file is a simplified version of the launch file from tutorial 2. The Gazebo simulation and robot spawn has been removed, and the mocap simulation has been replaced by the real mocap launch file. The controller node is exactly the same.
 
+**Note:** depending on the nexus you are running, you might need to replace "nexus1" by the real nexus number.
+
 ```XML
 <?xml version="1.0"?>
 <launch>
@@ -177,7 +179,9 @@ This launch file is a simplified version of the launch file from tutorial 2. The
   <include file="$(find mocap_qualisys)/launch/qualisys.launch" />
 
   <!-- Controller node -->
-  <node name="back_and_forth_controller" pkg="sml_nexus_tutorials" type="back_and_forth_controller.py" output="screen" />
+  <node name="back_and_forth_controller" pkg="sml_nexus_tutorials" type="back_and_forth_controller.py" output="screen" >
+    <remap from="cmd_vel" to="/nexus1/cmd_vel" />
+  </node>
 
 </launch>
 ```
