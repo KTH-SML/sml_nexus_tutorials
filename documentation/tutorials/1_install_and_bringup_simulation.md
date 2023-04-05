@@ -22,6 +22,8 @@ sudo apt-get install ros-<your_ros_distro>-std_msgs
 sudo apt-get install ros-<your_ros_distro>-std_srvs
 sudo apt-get install ros-<your_ros_distro>-tf
 sudo apt-get install ros-<your_ros_distro>-hector-gazebo-plugins
+sudo apt-get install ros-<your_ros_distro>-hector-move-base
+sudo apt-get install ros-<your_ros_distro>-hector-map-server
 ```
 
 Most of these packages should already be installed, as they are included in the default ROS desktop installation.
