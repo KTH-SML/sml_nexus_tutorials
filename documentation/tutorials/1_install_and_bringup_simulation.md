@@ -64,6 +64,13 @@ You should see Gazebo starting and a nexus robot spawning on screen.
 
 <a href="url"><img src="/documentation/pictures/tutorial_1_picture_1.png" align="center" height="665" width="1000"/></a>
 
+If the nexus robot is not spawning and gazeebo is giving an error during loading, it might be that there is a ghost process that needs to be killed. If this is the case, turn off gazebo and run the following lines 
+
+```
+killall gzserver
+killall gzclient
+```
+This commands will kill the ghost processes. You can now re run the previus steps
 
 ## Command & Feedback
 
