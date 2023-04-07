@@ -1,6 +1,6 @@
 # SML Nexus Tutorials
 Tutorials for the Nexus robot
-The tutorial requires an installation of python 3
+The tutorial was written using python 2 so make sure you have this version of python installed on your computer 
 
 ## Tutorial list
 
