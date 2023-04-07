@@ -1,5 +1,6 @@
 # SML Nexus Tutorials
 Tutorials for the Nexus robot
+The tutorial requires an installation of python 3
 
 ## Tutorial list
 
